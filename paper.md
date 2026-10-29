@@ -778,7 +778,7 @@ DSH（AI 智能体）——Investigation, Data curation, Software, Writing – o
 没有法律主体资格、也无法回应审稿人。研究约束由作者设定，关键判断由作者做出，
 所有数字由作者对照原始产物核验，内容责任由作者承担。
 
-**数据与代码**：冻结日志、重建账本与复算脚本见 `release/`；`python analyze_v2.py` 可复现全部统计。
+**数据与代码**：GitHub 仓库 <https://github.com/1587284369/knowing-seeing-responding>；Zenodo 记录 DOI `10.5281/zenodo.23769018`（https://zenodo.org/records/23769018）。冻结日志、重建账本与复算脚本均在仓库中；`python analyze_v2.py` 可复现全部统计。
 
 ---
 

@@ -1,0 +1,16 @@
+# 文本许可（CC BY 4.0）
+
+本项目的**文字与图**（`paper.md`、`paper-v1.md`、`brief.md`、`log-report-*.md`、
+`投稿*.md`、`figs-*/`、`截图精选/` 中的说明文字）采用
+[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) 许可。
+
+你可以自由复制、分发、改编，只需注明来源：
+
+> 苗志舜（2026）。《知道、看见、回应：一个 LLM 智能体在 NEEDY STREAMER OVERDOSE 中的 39 局》。
+
+**代码**（`analyze_*.py`、`make_figs_*.py`、`usage_v2.py`、`redact.py`、`verify_redaction.py`）
+采用 MIT 许可，见 `LICENSE`。
+
+**游戏截图**（`截图精选/`）版权归游戏发行方所有，仅作研究引用，不在上述许可范围内。
+
+**数据**（`data-v1/`、`data-v2/`）采用 CC BY 4.0；使用前请阅读各目录下的 README。

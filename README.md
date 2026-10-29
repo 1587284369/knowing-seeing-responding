@@ -24,27 +24,18 @@
 | `data-v1/` | v1 冻结快照 |
 | `analyze_v2.py` / `make_figs_v2.py` | v2 统计与绘图 |
 | `check_runs.py` | 校验正文 39 局表与 `runs-v2.csv` 一致 |
-| `redact.py` / `verify_redaction.py` / `make_zip.py` | 生成与校验脱敏发布包 |
 | `usage_v2.py` | 从 DSH 会话日志统计 token 用量 |
 | `analyze_logs.py` / `make_figs.py` | v1 的脚本（保留以复现 v1） |
 
 ## 复现
 
-在本目录执行（Python 3.11；本机 `python` 是商店占位符，用 `py`）：
+在本目录执行（Python 3.11；Windows 上若 `python` 是应用商店占位符，改用 `py`）：
 
 ```powershell
 py .\analyze_v2.py        # → log-report-v2.md
 py .\make_figs_v2.py      # → figs-v2/fig1-5.png
-py .\usage_v2.py          # → token 用量（需 zstandard；无截止时间，数字会随新会话漂移）
-py .\check_runs.py        # 校验 paper.md §5.1 的 39 局表与 runs-v2.csv 逐行一致
-```
-
-重新生成发布包（脱敏 → 校验 → 打包）：
-
-```powershell
-py .\redact.py            # → release/（替换本机路径/用户名）
-py .\verify_redaction.py  # 行数、事件数、残留校验
-py .\make_zip.py          # → ../08-论文-知道看见回应-发布包-<日期>.zip
+py .\usage_v2.py          # → token 用量（需 zstandard；脚本无截止时间，数字会随新会话漂移）
+py .\check_runs.py        # 校验正文 39 局表与 runs-v2.csv 逐行一致
 ```
 
 判定层自测与账本回放（只读游戏项目；回放用冻结账本保证结果一致）：

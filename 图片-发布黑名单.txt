@@ -1,7 +1,26 @@
-# 不可直接发布的截图（231 张）；游戏窗口内截图 9421 张相对安全
+# 不可直接发布的截图（250 张）；游戏窗口内截图 13243 张相对安全
 
 # 规则：尺寸不是 960x540 的一律视为可能包含桌面/其他窗口/账号信息
 
+A1-jine3-crop.png	620x360	非 960x540（可能是整屏/桌面/DSH 界面）
+A1-menu-crop.png	640x640	非 960x540（可能是整屏/桌面/DSH 界面）
+A1-plandetail-crop.png	800x540	非 960x540（可能是整屏/桌面/DSH 界面）
+A2-card-crop.png	640x520	非 960x540（可能是整屏/桌面/DSH 界面）
+A2-list2-crop.png	900x680	非 960x540（可能是整屏/桌面/DSH 界面）
+A2-list3-crop.png	800x660	非 960x540（可能是整屏/桌面/DSH 界面）
+A2-plandetail-crop.png	920x600	非 960x540（可能是整屏/桌面/DSH 界面）
+A2-title-crop.png	720x210	非 960x540（可能是整屏/桌面/DSH 界面）
+A2r-list-crop.png	920x600	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-09-jine-corner.png	560x320	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-09-taskbar-zoom.png	1200x168	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-10-icons-zoom.png	600x500	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-12-taskbar-zoom.png	1920x140	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-15-taskbar-zoom.png	2100x150	非 960x540（可能是整屏/桌面/DSH 界面）
+C1-27-webcam-btns.png	560x210	非 960x540（可能是整屏/桌面/DSH 界面）
+C1b-07-stickers.png	850x750	非 960x540（可能是整屏/桌面/DSH 界面）
+C1b-10-tbz.png	1080x168	非 960x540（可能是整屏/桌面/DSH 界面）
+C2-06-btns.png	360x200	非 960x540（可能是整屏/桌面/DSH 界面）
+C2-23-bottom.png	2240x160	非 960x540（可能是整屏/桌面/DSH 界面）
 a2.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
 aa3_tabs.png	1080x360	非 960x540（可能是整屏/桌面/DSH 界面）
 ab5_btn.png	700x250	非 960x540（可能是整屏/桌面/DSH 界面）
@@ -34,8 +53,7 @@ clickword.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
 cmt_zoom.png	480x705	非 960x540（可能是整屏/桌面/DSH 界面）
 comments_p3.png	600x750	非 960x540（可能是整屏/桌面/DSH 界面）
 cont.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
-d6b.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
-d6c.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
+crop-card.png	600x720	非 960x540（可能是整屏/桌面/DSH 界面）
 d6d.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
 daysel.png	230x70	非 960x540（可能是整屏/桌面/DSH 界面）
 diff_zoom.png	1338x420	非 960x540（可能是整屏/桌面/DSH 界面）
@@ -68,6 +86,7 @@ jinepw.png	640x180	非 960x540（可能是整屏/桌面/DSH 界面）
 jinput.png	590x240	非 960x540（可能是整屏/桌面/DSH 界面）
 jz.png	660x740	非 960x540（可能是整屏/桌面/DSH 界面）
 jz15.png	610x690	非 960x540（可能是整屏/桌面/DSH 界面）
+last.png	840x70	非 960x540（可能是整屏/桌面/DSH 界面）
 login2.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）
 love5x.png	700x225	非 960x540（可能是整屏/桌面/DSH 界面）
 lp.png	1920x1017	非 960x540（可能是整屏/桌面/DSH 界面）

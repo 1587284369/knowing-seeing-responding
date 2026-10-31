@@ -11,7 +11,7 @@ def W(*a): OUT.append(" ".join(str(x) for x in a))
 
 # ---------------------------------------------------------------- actions.log
 rows, raw = [], 0
-with io.open(os.path.join(DATA, "actions.log"), encoding="utf-8", errors="replace") as f:
+with io.open(os.path.join(DATA, "actions.log"), encoding="utf-8-sig", errors="replace") as f:
     for line in f:
         raw += 1
         p = line.rstrip("\n").split("\t")

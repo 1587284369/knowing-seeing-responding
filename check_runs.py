@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-"""把 paper.md §5.1 的 39 局表与 data-v2/runs-v2.csv 逐行比对。"""
+"""把 paper.md 附录 A.4 的 39 局表与 data-v2/runs-v2.csv 逐行比对。
+
+历史：v2.2 及以前表在 §5.1，v2.3 起移到「附录 A.4 39 局明细」，并多出一列
+「连续 Day1→」。因此本脚本只扫 A.4 小节内的表，且允许 5 列（旧）与 6 列（新）两种形态。
+
+    py ./check_runs.py
+"""
 import io, csv, re, sys
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -7,30 +13,53 @@ rows = list(csv.DictReader(io.open("data-v2/runs-v2.csv", encoding="utf-8-sig"))
 csv_by_id = {int(r["id"]): r for r in rows}
 print("csv rows:", len(rows))
 
-paper = io.open("paper.md", encoding="utf-8-sig").read().splitlines()
-CELL = r"\s*\**\s*([^|]*?)\s*\**\s*\|"
-pat_a = re.compile(r"^\|\s*(\d+)\s*\|\s*(\d\d-\d\d)\s*\|\s*(\d+)\s*\|" + CELL + CELL + r"\s*$")
-pat_b = re.compile(r"^\|\s*(\d+)\s*\|\s*(\d\d-\d\d)\s*\|\s*D(\d+)\s*→\s*D(\d+)\s*\|" + CELL + CELL + CELL + r"\s*$")
+lines = io.open("paper.md", encoding="utf-8-sig").read().splitlines()
+
+# 只扫「附录 A.4」小节：从标题行起，到下一个同级或更高级标题（## / ### 之外的 --- 或 ## ）结束
+in_section = False
+table_lines = []
+for ln in lines:
+    s = ln.strip()
+    if s.startswith("###") and "A.4" in s:
+        in_section = True
+        continue
+    if in_section:
+        if s.startswith("## ") or s.startswith("### "):
+            break
+        if s.startswith("|"):
+            table_lines.append(s)
+
+DAY_RANGE = re.compile(r"^D(\d+)\s*[→>-]+\s*D(\d+)$")
+
+
+def cells_of(line):
+    return [c.strip() for c in line.strip().strip("|").split("|")]
+
 
 seen = {}
-for ln in paper:
-    m = pat_a.match(ln)
-    if m:
-        i = int(m.group(1))
-        if i <= 24:
-            seen[i] = ("A", m.group(2), m.group(3), m.group(3), m.group(4), m.group(5))
+for line in table_lines:
+    cs = cells_of(line)
+    if len(cs) < 5:
         continue
-    m = pat_b.match(ln)
+    if not cs[0].isdigit() or not re.match(r"^\d\d-\d\d$", cs[1]):
+        continue
+    i = int(cs[0])
+    if not 1 <= i <= 39:
+        continue
+    m = DAY_RANGE.match(cs[2])
     if m:
-        i = int(m.group(1))
-        seen[i] = ("B", m.group(2), m.group(3), m.group(4), m.group(5), m.group(6))
+        seen[i] = ("B", cs[1], m.group(1), m.group(2), cs[3], cs[4])
+    elif cs[2].isdigit():
+        seen[i] = ("A", cs[1], cs[2], cs[2], cs[3], cs[4])
+    else:
+        print("UNPARSED id=%s day=%r" % (i, cs[2]))
 
 print("paper table rows parsed:", len(seen))
 
 
 def norm_fans(s):
     s = s.replace(",", "").replace("~", "").replace("*", "").strip()
-    if s in ("—", ""):
+    if s in ("—", "-", ""):
         return None
     return int(s)
 

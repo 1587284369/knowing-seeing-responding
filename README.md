@@ -78,7 +78,7 @@ powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -Replay 
 
 1. 美术/皮肤：Rainmeter 皮肤、KDE 主题、同人 MV；
 2. 游戏内聊天接入 LLM 的插件（E-sion/NEEDY-GIRL-OVERDOSE）；
-3. 角色扮演式对话（ChatHaruhi 系列的 Needy 变体，未核实正文）；
+3. 角色扮演式对话（ChatHaruhi 系列的 Needy 变体，「该 Space 已停止运行（运行时错误，exit 137），正文不可得」）；
 4. 攻略 / 结局 wiki。
 
 未检索到「LLM 智能体自动游玩本作并发布过程数据」的公开记录。

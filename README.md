@@ -1,7 +1,9 @@
 # 08 · 论文《知道、看见、回应》
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23833707.svg)](https://doi.org/10.5281/zenodo.23833707)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23769017.svg)](https://doi.org/10.5281/zenodo.23769017)
 [![GitHub](https://img.shields.io/badge/GitHub-knowing--seeing--responding-blue)](https://github.com/1587284369/knowing-seeing-responding)
+
+> 徽章用**概念 DOI** `10.5281/zenodo.23769017`：它始终指向最新版本，不会因为发新版而失效。
 
 一个 LLM 智能体在《NEEDY STREAMER OVERDOSE》中的 **39 局**（10 天）：前 24 局全败，第 39 局通关 `Happy End World`。
 
@@ -13,7 +15,7 @@
 
 | 文件 | 说明 |
 |---|---|
-| `paper.md` | **v2.5 全文（本地，未发布）**（39 局、五图；相对 v2.4 新增 §5.9 闸门消融与附录 C 更正五） |
+| `paper.md` | **v2.6 全文**（39 局、五图；相对 v2.5 新增 B 组补测 5/5，双侧 Fisher p = 0.018） |
 | `paper-v1.md` | v1 全文（24 局、0 通关；作为版本留档） |
 | `brief.md` | 一页纸速览 + 评估问卷（v2，给评审 AI / 合作者看） |
 | `log-report-v2.md` | v2 量化报告（论文所有数字的来源） |
@@ -23,8 +25,10 @@
 | `data-v2/` | v2 冻结快照 + 重建账本（`runs-v2.csv`、`nights-v2.csv`） |
 | `data-v1/` | v1 冻结快照 |
 | `analyze_v2.py` / `make_figs_v2.py` | v2 统计与绘图 |
+| `agent/` | **智能体控制层**（截图 / OCR / 合成点击、状态机、闸门、夜播结算）——复现「它怎么点的」 |
 | `check_runs.py` | 校验正文 39 局表与 `runs-v2.csv` 一致 |
 | `workshop-8页-draft-2026-10-31.md` | workshop short paper 稿（~6.2 页，中文；待英译） |
+| `发布说明-v2.6.md` | v2.6 的变更清单（B 组补测 5/5、p 口径统一、SHA1SUMS） |
 | `发布说明-v2.5.md` | v2.5 的变更清单与未解决项 |
 | `AI-参与声明.md` | AI 使用披露（预印本/投稿系统可直接裁剪使用） |
 | `外部意见-豆包/` | 一次外部模拟审稿的原文与归并表（内部记录） |
@@ -50,6 +54,18 @@ powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -SelfTes
 powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -Replay .\data-v2\daybook.csv -FromTime 00:00 -Until 06:00
 ```
 
+## 网络条件分离实验（v2.6 更新）
+
+同一 Day29 存档、同样四维（937,734 / 75 / 100 / 23）、同样动作序列，只改「进入夜晚」之前的网络：
+
+| 组 | 网络 | 局数 | 结局 |
+|---|---|---:|---|
+| A | 全程联网 | 3 | 3/3 `(Un)happy End World` |
+| B | 进入夜晚前断网 | **8** | **8/8 `Happy End World`** |
+
+双侧 Fisher 精确检验 **p = 0.006**（口径：求和「概率 ≤ 观测」，与文中 0.174 同口径；若按 2×最小尾 则为 0.012）。
+单机、非盲、单一存档，**仍按受控观察定性，不是可推广结论**。
+
 ## 相关课题
 
 - `../09-自述的可靠性/`：从《日后谈》长出的独立课题（自述可信度、免费可得性、纠正分诊三问）。
@@ -62,7 +78,9 @@ powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -Replay 
 ## 状态
 
 - 当前形态：workshop / 短论文 / 预印本级别（v2 比 v1 多了"干预—结果"与一条可检验机制）。
-- 版本：**v2.5**（2026-10-31）。Zenodo 新版本 DOI **10.5281/zenodo.23833707**（概念 DOI 10.5281/zenodo.23769017）；GitHub 与 Zenodo 均已更新到 v2.5，改动清单见 `发布说明-v2.5.md`。
+- 版本：**v2.6**（2026-11-01）。Zenodo 记录 `23769017`（概念 DOI，始终指向最新版）；v2.5 的版本 DOI 为 `23833707`，v2.6 的版本 DOI 为 **`10.5281/zenodo.23856635`**。改动清单见 `发布说明-v2.6.md`。
+- **v2.6 的新增**：B 组补测两轮（B05 / B06），离线样本 **3/3 → 8/8**，双侧 Fisher **p 0.10 → 0.006**；
+  全文 Fisher 口径统一（与 0.174 同口径）；包内新增 `SHA1SUMS.txt`，下载即可自证。
 - v2.4 的新增：验证实验（联网 3/3 `(Un)happy` vs 断网 3/3 `Happy End`，5.7.4）与
   **判定时点更正**（决定分支的是「进入夜晚」那一刻的网络，不是结算；附录 C 更正四）。
   证据判据同时改为「动作序列 + 夜播前四维 + 结局名（目视）」，**截图 md5 不再作为判据**。
@@ -71,6 +89,7 @@ powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -Replay 
   前置了 n=1/跨存档/账本重建等局限。一手材料见 `验证/协议-实验C-*.md` 与 `验证/战报-实验C-*.md`，
   发布包里对应 `supplement-实验C/`。
 - 若要投正式长文，需补：人类基线、网络条件的多存档复现与顺序双盲、**闸门有效性消融（2026-10-31 已尝试，0 个有效样本，见 §5.9）**、多模型、跨游戏、开源（见论文 §8.2）。
+
 ## 检索范围与最近的相关工作（2026-11-01）
 
 本作在 arXiv 全库检索为 0 条（all:"NEEDY GIRL OVERDOSE"、all:"NEEDY STREAMER OVERDOSE"）。

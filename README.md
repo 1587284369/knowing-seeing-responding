@@ -1,6 +1,6 @@
 # 08 · 论文《知道、看见、回应》
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23769018.svg)](https://doi.org/10.5281/zenodo.23769018)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23833707.svg)](https://doi.org/10.5281/zenodo.23833707)
 [![GitHub](https://img.shields.io/badge/GitHub-knowing--seeing--responding-blue)](https://github.com/1587284369/knowing-seeing-responding)
 
 一个 LLM 智能体在《NEEDY STREAMER OVERDOSE》中的 **39 局**（10 天）：前 24 局全败，第 39 局通关 `Happy End World`。

@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 """v2 统计：读 data-v2 的冻结日志与重建账本，输出 log-report-v2.md。"""
-import re, csv, io, os, glob
+import re, csv, io, os, glob, sys
 from collections import Counter
 from datetime import datetime, timedelta
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(HERE, "data-v2")
+# ---- 输入：默认取脚本旁边的 data-v2；外部验证者可用 --data 指过来 ----
+def _arg(flag, default):
+    if flag in sys.argv:
+        return sys.argv[sys.argv.index(flag) + 1]
+    return default
+DATA = _arg("--data", os.path.join(HERE, "data-v2"))
+if not os.path.isdir(DATA):
+    sys.exit("找不到数据目录：" + DATA + '\n' +
+             "  用 --data <release目录>/data-v2 指过来。")
 OUT = []
 def W(*a): OUT.append(" ".join(str(x) for x in a))
 
@@ -140,16 +148,14 @@ W()
 with io.open(os.path.join(DATA, "nights-v2.csv"), encoding="utf-8-sig") as f:
     nights = list(csv.DictReader(f))
 def is_empty(p): return p.strip() in ("空转", "睡到明天", "")
-for ph, label in (("A", "Phase A（有序记录仅第 19 局，10-24）"), ("B", "Phase B（10-26→10-29）")):
-    sub = [x for x in nights if x["phase"] == ph]
-    e = sum(1 for x in sub if is_empty(x["plan"]))
-    W("- %s：有序夜晚 %d，空转 %d（%.1f%%）" % (label, len(sub), e, 100*e/max(1, len(sub))))
-W()
-W("- 说明：Phase A 另有第 10/11/12 局只有播/空计数（3/7、4/7、4/7），并入总计：")
-pa = 13 + 0
-W("  Phase A 计数口径 = 13/30（含上述 3 局），Phase B = %d/%d。" % (
-    sum(1 for x in nights if x["phase"] == "B" and is_empty(x["plan"])),
-    sum(1 for x in nights if x["phase"] == "B")))
+a_runs = [r for r in runs if r["phase"] == "A" and (r.get("nights") or "").strip()]
+na = sum(int(r["nights"]) for r in a_runs)
+ea = sum(int(r["empty"] or 0) for r in a_runs)
+b_sub = [x for x in nights if x["phase"] == "B"]
+nb = len(b_sub)
+eb = sum(1 for x in b_sub if is_empty(x["plan"]))
+W("- Phase A：有序夜晚 %d，空转 %d（%.1f%%）" % (na, ea, 100*ea/max(1, na)))
+W("- Phase B：有序夜晚 %d，空转 %d（%.1f%%）" % (nb, eb, 100*eb/max(1, nb)))
 W()
 W("关键局逐夜：")
 W()
@@ -199,7 +205,13 @@ W()
 bdirs = sorted(glob.glob(os.path.join(HERE, "..", "06-游戏自动化", "NEEDY-GIRL-OVERDOSE", "save-backup", "*")))
 W("## 11. 存档备份")
 W()
-W("- 备份目录：%d 个（仍在游戏项目 save-backup/ 下）" % len(bdirs))
+W("- 备份目录：%s"
+  % (("%d 个（仍在游戏项目 save-backup/ 下）" % len(bdirs)) if len(bdirs)
+     else "n/a（本机找不到游戏项目的 save-backup/，未计入）"))
 
-io.open(os.path.join(HERE, "log-report-v2.md"), "w", encoding="utf-8").write("\n".join(OUT) + "\n")
-print("written log-report-v2.md")
+# ---- 输出：默认 ./out（不往源码目录写）；--out 可指定 ----
+outdir = os.path.abspath(_arg("--out", os.path.join(os.getcwd(), "out")))
+os.makedirs(outdir, exist_ok=True)
+outpath = os.path.join(outdir, "log-report-v2.md")
+io.open(outpath, "w", encoding="utf-8").write("\n".join(OUT) + "\n")
+print("written " + outpath)

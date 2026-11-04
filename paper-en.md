@@ -435,7 +435,7 @@ Run 19 is typical: nights 5 and 6 of its nine were empty because both daytime sl
 (too few cells available for going out, going online locked by unread messages, the list all grey, sleeping). Run 28 (803,508), by contrast, had cards on all four nights:
 the streaming multiplier went ×2 → ×3 → ×3 → ×5, and on the final night `闲谈5` alone added +207,478.
 
-**An empty night is not "nothing was streamed at night" but "nothing was prepared during the day for the night".** In v1 this sentence was only an explanation; in v2 it has a control:
+**An empty night is a night on which no stream took place (including the "sleep until tomorrow" option).** In every recorded case the cause was the same: nothing had been prepared during the day. In v1 this sentence was only an explanation; in v2 it has a control:
 The empty-night rate of the last 15 runs fell from 43% to 25% and was zero in the final three; what those three runs share is that a card that could be streamed was prepared in advance every night.
 
 ### 5.4 Perception: unreadable, and misread
@@ -881,6 +881,8 @@ the 39 attempts are a lower bound, the per-run ledger was rebuilt after the fact
 There is no human baseline; the effect of the message gate has still not been measured in isolation (the ablation in 5.9 obtained 0 valid samples);
 there is no cross-game evidence and no multi-model evidence. Section 7 sets out item by item how these threats limit specific conclusions.
 It suffices to support one mechanistic hypothesis about "knowing but not doing", and does not suffice to support general claims about GUI agents.
+
+**What can be checked is the ledger, not the experiment.** The frozen logs, the recomputation scripts and the plotting scripts are all bundled, and every number in Appendix A can be independently recomputed; but the machine that produced those logs was never archived — the exact versions of DSH and of the DeepSeek model, together with the prompts and the action-space configuration, were not released (the run logs preserve only the identifier `deepseek-harness`). A third party can therefore audit the numbers and the figures, but cannot re-run the experiment.
 
 ### 8.2 What It Would Take to Make It Solid
 

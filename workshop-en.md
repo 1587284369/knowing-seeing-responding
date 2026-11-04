@@ -244,7 +244,7 @@ F1 sits next to F0 on the chain: a wrong state is used as if it were the real on
 
 ### 5.3 Empty nights: 43.3% → 25.0%
 
-An "empty night" is a night that produced no follower growth. On the reconstructable per-night ledger the
+An "empty night" is a night on which no stream took place — in every recorded case because no material had been prepared during the day — so the streak multiplier is not advanced and nothing is gained. On the reconstructable per-night ledger the
 first phase has 30 nights with 13 empty (43.3%). That 30 is a **merged denominator**: run 19 contributes 9
 nights with full per-night detail (2 empty, 22.2%) and 21 further nights come from runs 10/11/12, which
 recorded only "streamed / empty" counts without detail. The later phase has 28 nights with 7 empty (25.0%);
@@ -275,9 +275,9 @@ success rate. Splitting the process into five checkable milestones is far easier
 The starting points of the five milestones are day 1, day 20, day 26, day 26 and day 29. **None of them plays
 Day 1 to Day 30 continuously.**
 
-The winning recipe (shared by runs 38 and 39) is four consecutive nights: D26 night stream ASMR3 (×1),
-240,653 → 382,367; D27 天使3, → 423,817; D28 ASMR4 (×3), → 937,734; D29 天使4, → 1,015,334; D30 a final
-stream, then settlement. The four nights multiply followers by about 4.22.
+The winning recipe (shared by runs 38 and 39) is four consecutive nights: D26 night stream ASMR 3 (×1),
+240,653 → 382,367; D27 天使3, → 423,817; D28 ASMR 4 (×3), → 937,734; D29 天使4, → 1,015,334; D30 a final
+stream, then settlement. The four nights multiply followers by about 4.22. (240,653 is the follower count at the start of day 26, read from the save; the per-night ledger records only post-stream values, so this one number cannot be recomputed from the released logs alone.)
 
 None of those four nights is an "optimal line": two of them are zero-stress commemorative saves whose yield
 is inherently limited. What carries the curve is that **not one night was skipped** — the multiplier is
@@ -323,7 +323,7 @@ can enter that branch at all.**
 The two arms separate completely. **The decision point is therefore pinned**: what decides the branch is the
 network state at the moment of "entering the night", neither at settlement nor at game launch. B0 is the
 counter-case — same save, same sequence, only the disconnect moved after entering the night, and the ending
-falls back to arm A. It also explains why three and a half minutes of disconnection was enough in run 39.
+falls back to arm A. A further probe shows that the branch is re-sampled on every entry into the night rather than fixed once: replaying the same day-30 save online returns `(Un)happy End World`, while the offline run of that save returns `Happy End World`, and the save file is byte-identical before and after the replay. It also explains why three and a half minutes of disconnection was enough in run 39.
 
 **Boundary.** All this shows is that on **this save, with this set of four stats**, moving the disconnect
 before "entering the night" flips the ending. It is not a claim that disconnecting under any save or any

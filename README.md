@@ -95,7 +95,7 @@ powershell -File ..\06-游戏自动化\NEEDY-GIRL-OVERDOSE\contract.ps1 -Replay 
 
 ## 检索范围与最近的相关工作（2026-11-01）
 
-本作在 arXiv 全库检索为 0 条（all:"NEEDY GIRL OVERDOSE"、all:"NEEDY STREAMER OVERDOSE"）。
+本作在 arXiv 全库检索为 0 条（`all:"NEEDY GIRL OVERDOSE"`、`all:"NEEDY STREAMER OVERLOAD"`；2026-11-01 初搜，2026-11-10 复核仍为 0）。
 公开的相关工作集中在四类，均不提供逐局过程数据：
 
 1. 美术/皮肤：Rainmeter 皮肤、KDE 主题、同人 MV；
